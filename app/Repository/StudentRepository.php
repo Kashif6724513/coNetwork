@@ -17,6 +17,7 @@ class StudentRepository implements StudentRepositoryInterface
         return StudentSession::create([
             'session' => $request->session,
             'is_active' => $request->is_active
+            
         ]);
     }
 
