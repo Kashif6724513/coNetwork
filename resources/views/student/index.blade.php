@@ -27,11 +27,11 @@
                 @foreach ($students as $student)
                     <tr>
                         <th scope="row">{{ $student->id }}</th>
-                        <td><img src="{{ asset('images/' . $student->student->image) }}" width="80px" alt=""></td>
-                        <td>{{ $student->student->name }}</td>
-                        <td>{{ $student->student->father_name }}</td>
-                        <td>{{ $student->student->phone }}</td>
-                        <td>{{ $student->student->email }}</td>
+                        <td><img src="{{ asset('images/' . @$student->student->image) }}" width="80px" alt=""></td>
+                        <td>{{ @$student->student->name }}</td>
+                        <td>{{ @$student->student->father_name }}</td>
+                        <td>{{ @$student->student->phone }}</td>
+                        <td>{{ @$student->student->email }}</td>
                         <td>{{ optional($student->session)->session }}</td>
                         <td>
                             <a href="{{ route('student.edit', $student->id) }}" class="btn btn-success">Edit</a>

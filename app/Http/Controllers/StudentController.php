@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Jobs\SendStudentEmailJob;
+use Illuminate\Support\Facades\Log;
 use App\Repository\interfaces\StudentsRepositoryInterfaces;
 
 class StudentController extends Controller
@@ -35,7 +37,7 @@ class StudentController extends Controller
             'email' => 'required|email',
             'image' => 'required'
         ]);
-       $this->studentsRepository->store($request);
+        $this->studentsRepository->store($request);
         return redirect()->route('student.index')->with('success', 'Student added successfully');
     }
 
@@ -48,7 +50,7 @@ class StudentController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->studentsRepository->update($request,$id);
+        $this->studentsRepository->update($request, $id);
         return redirect()->route('student.index')->with('success', 'Student edited successfully');
     }
 
@@ -58,4 +60,20 @@ class StudentController extends Controller
         return redirect()->route('student.index')->with('success', 'Student deleted successfully');
     }
 
+    // public function sendEmailsToStudents()
+    // {
+    //     $student = $this->studentsRepository->find(3);
+    //     dispatch(new SendStudentEmailJob($student));
+    //     return "Job dispatched!";
+    // }
+    public function sendEmailsToStudents()
+    {
+        $students = $this->studentsRepository->all();
+        
+        foreach ($students as $student) {
+            dispatch(new SendStudentEmailJob($student));
+        }
+
+        return response()->json(['message' => 'Emails queued for valid students!']);
+    }
 }
