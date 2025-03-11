@@ -44,6 +44,11 @@
                   <i class="fs-8 bi bi-file-earmark-minus"></i><span class="fs-7 ms-2 d-none d-sm-inline">View Student Session</span>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('send.email')}}" class="nav-link text-white">
+                  <i class="fs-8 bi bi-file-earmark-minus"></i><span class="fs-7 ms-2 d-none d-sm-inline">Send Email</span>
+                </a>
+              </li>
             </ul>
           </div>
         </div>

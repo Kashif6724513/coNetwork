@@ -74,6 +74,6 @@ class StudentController extends Controller
             dispatch(new SendStudentEmailJob($student));
         }
 
-        return response()->json(['message' => 'Emails queued for valid students!']);
+        return redirect()->back()->with('success','Email sent to student successfully');
     }
 }

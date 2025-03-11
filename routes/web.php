@@ -24,4 +24,4 @@ Route::get('/studentSession/edit/{id}',[StudentSessionController::class,'edit'])
 Route::post('/studentSession/update/{id}',[StudentSessionController::class,'update'])->name('studentSession.update');
 Route::get('/studentSession/delete/{id}',[StudentSessionController::class,'delete'])->name('studentSession.delete');
 
-Route::get('/send-emails', [StudentController::class, 'sendEmailsToStudents']);
+Route::get('/send-emails', [StudentController::class, 'sendEmailsToStudents'])->name('send.email');
