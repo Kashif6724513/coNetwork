@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
 use App\Models\Student;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentSessionController;
+use App\Http\Controllers\TeacherController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,3 +27,10 @@ Route::post('/studentSession/update/{id}',[StudentSessionController::class,'upda
 Route::get('/studentSession/delete/{id}',[StudentSessionController::class,'delete'])->name('studentSession.delete');
 
 Route::get('/send-emails', [StudentController::class, 'sendEmailsToStudents'])->name('send.email');
+
+
+Route::get('/teacher/index',[TeacherController::class,'index'])->name('teacher.index');
+Route::get('/teacher/store',[TeacherController::class,'store'])->name('teacher.store');
+
+Route::get('/department/index',[DepartmentController::class,'index'])->name('deparment.index');
+Route::get('/department/store',[DepartmentController::class,'store'])->name('deparment.store');
